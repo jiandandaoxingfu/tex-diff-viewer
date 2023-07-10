@@ -7,7 +7,7 @@ import ReactDiffViewer, { DiffMethod } from 'react-diff-viewer';
 const uploadHandler = function(id, setCode, fileCount, setFileCount) {
   let file = document.getElementById('upload-input-' + id)?.files?.[0];
   if (!file) return;
-  document.getElementById('upload-' + id).innerText = file.name.replace('.tex', '').slice(0, 5);
+  document.getElementById('upload-' + id).innerText = file.name;
   let reader = new FileReader();
   reader.onload = function() {
     let result = this.result.replace(/([a-z]+\.) ([A-Z][a-z]+)/g, '$1\n$2')
@@ -65,6 +65,7 @@ function App() {
   const [newCode, setNewCode] = useState('');
   const [isDiff, setIsDiff] = useState(false);
   const [showDiffOnly, setShowDiffOnly] = useState(true);
+  const [disableWordDiff, setDisableWordDiff] = useState(false);
 
   return (
     isDiff ?
@@ -73,7 +74,7 @@ function App() {
           oldValue={oldCode} 
           newValue={newCode}
           splitView={false} 
-          disableWordDiff={true}
+          disableWordDiff={disableWordDiff}
           hideLineNumbers={true}
           extraLinesSurroundingDiff={1}
           compareMethod={DiffMethod.WORDS}
@@ -84,8 +85,11 @@ function App() {
                 boxShadow: '0px -6px 6px 3px gray'}}>
           <input type="checkbox" id="showDiffOnly" onChange={() => setShowDiffOnly(!showDiffOnly)} 
               checked={showDiffOnly} style={{position: 'absolute', zoom: "1.6", top: '12px'}}/>
-          <label style={{padding: '5px'}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;折叠未发生变动部分</label>
-          <button id="download" style={{marginLeft: '40px', padding: '5px'}} onClick={() => {!showDiffOnly && download()}} title="未折叠状态下可以下载">下载标记tex文件</button>
+          <label style={{padding: '5px', margin: '0 20px 0 22px'}}>折叠未发生变动部分</label>
+          <input type="checkbox" id="disableWordDiff" onChange={() => setDisableWordDiff(!disableWordDiff)} 
+              checked={!disableWordDiff} style={{position: 'absolute', zoom: "1.6", top: '12px'}}/>
+          <label style={{padding: '5px'}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;凸显单词对比</label>
+          <button id="download" style={{marginLeft: '30px', padding: '5px'}} onClick={() => {!showDiffOnly && disableWordDiff && download()}} title="取消勾选两个选项后可以下载">下载标记tex文件</button>
         </div>
       </>
       :
