@@ -27,7 +27,7 @@ function rotate(oldCode, setOldCode, newCode, setNewCode) {
 function download() {
   const tex = {'+': '', '-': ''};
   for (let tr of document.querySelectorAll('.css-1n7ec1i-line') ) {
-      let pm = tr.firstElementChild.innerText;
+      let pm = tr.children[2].innerText;
       if(pm.length === 1) {
           let text = tr.lastElementChild.innerText;
           let ends = '';
@@ -75,7 +75,7 @@ function App() {
           newValue={newCode}
           splitView={false} 
           disableWordDiff={disableWordDiff}
-          hideLineNumbers={true}
+          hideLineNumbers={false}
           extraLinesSurroundingDiff={1}
           compareMethod={DiffMethod.WORDS}
           showDiffOnly={showDiffOnly}
