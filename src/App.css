@@ -115,3 +115,9 @@ img#arrow {
 .css-1ks9aww-gutter {
   min-width: 0 !important;
 }
+
+@media print {
+  #diff-tool {
+    display: none;
+  }
+}

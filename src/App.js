@@ -80,7 +80,7 @@ function App() {
           compareMethod={DiffMethod.WORDS}
           showDiffOnly={showDiffOnly}
         />
-        <div style={{position: 'fixed', width: '100%', textAlign: 'center', 
+        <div id="diff-tool" style={{position: 'fixed', width: '100%', textAlign: 'center', 
                 paddingTop: '15px', bottom: '0px', height: '40px', backgroundColor: 'white', 
                 boxShadow: '0px -6px 6px 3px gray'}}>
           <input type="checkbox" id="showDiffOnly" onChange={() => setShowDiffOnly(!showDiffOnly)} 
