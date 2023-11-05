@@ -97,7 +97,7 @@ function App() {
         <div id="uploader">
           <button id="upload-old" onClick={() => document.getElementById('upload-old').nextElementSibling.click()}>选择老文件</button>
           <input type="file" accept=".tex" id="upload-input-old" className="upload-input" onChange={() => uploadHandler('old', setOldCode)}/>
-          <img id="arrow" src={arrow} onClick={() => rotate(oldCode, setOldCode, newCode, setNewCode)}/>
+          <img id="arrow" alt="" src={arrow} onClick={() => rotate(oldCode, setOldCode, newCode, setNewCode)}/>
           <button id="upload-new" onClick={() => document.getElementById('upload-new').nextElementSibling.click()}>选择新文件</button>
           <input type="file" accept=".tex" id="upload-input-new" className="upload-input" onChange={() => uploadHandler('new', setNewCode)}/>
           <br/>
