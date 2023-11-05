@@ -57,7 +57,6 @@ function download() {
   downloadLink.href = textFileURL;
   downloadLink.setAttribute('download', 'test_new.tex');
   downloadLink.click();
-
 }
 
 function App() {
